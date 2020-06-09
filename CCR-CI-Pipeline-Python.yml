@@ -15,10 +15,6 @@ trigger:
     - ml_service/CCR-Invoke-ML-Training-Pipeline.py
 
 
-variables:
-- template: diabetes_regression-variables-template.yml
-- group: devopsforai-aml-vg
-
 pool:
   vmImage: ubuntu-latest
 
@@ -30,9 +26,9 @@ stages:
   - job: "Model_CI_Pipeline"
     displayName: "Model CI Pipeline"
     container: mlops
-    timeoutInMinutes: 0
-    steps:
-    - template: code-quality-template.yml
+    #timeoutInMinutes: 0
+    #steps:
+    # - template: code-quality-template.yml
     - task: AzureCLI@1
       inputs:
         azureSubscription: '$(WORKSPACE_SVC_CONNECTION)'
