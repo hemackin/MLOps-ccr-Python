@@ -55,37 +55,37 @@ def main():
     dataset_name = e.dataset_name
 
     # Check to see if dataset exists
-    if (dataset_name not in aml_workspace.datasets):
+ #   if (dataset_name not in aml_workspace.datasets):
         # This call creates an example CSV from sklearn sample data. If you
         # have already bootstrapped your project, you can comment this line
         # out and use your own CSV.
-        create_sample_data_csv()
+  #      create_sample_data_csv()
 
         # Use a CSV to read in the data set.
-        file_name = 'diabetes.csv'
+   #     file_name = 'diabetes.csv'
 
-        if (not os.path.exists(file_name)):
-            raise Exception("Could not find CSV dataset at \"%s\". If you have bootstrapped your project, you will need to provide a CSV." % file_name)  # NOQA: E501
+    #    if (not os.path.exists(file_name)):
+     #       raise Exception("Could not find CSV dataset at \"%s\". If you have bootstrapped your project, you will need to provide a CSV." % file_name)  # NOQA: E501
 
         # Upload file to default datastore in workspace
-        datatstore = Datastore.get(aml_workspace, datastore_name)
-        target_path = 'training-data/'
-        datatstore.upload_files(
-            files=[file_name],
-            target_path=target_path,
-            overwrite=True,
-            show_progress=False)
+     #   datatstore = Datastore.get(aml_workspace, datastore_name)
+      #  target_path = 'training-data/'
+       # datatstore.upload_files(
+        #    files=[file_name],
+         #   target_path=target_path,
+          #  overwrite=True,
+           # show_progress=False)
 
         # Register dataset
-        path_on_datastore = os.path.join(target_path, file_name)
-        dataset = Dataset.Tabular.from_delimited_files(
-            path=(datatstore, path_on_datastore))
-        dataset = dataset.register(
-            workspace=aml_workspace,
-            name=dataset_name,
-            description='diabetes training data',
-            tags={'format': 'CSV'},
-            create_new_version=True)
+        #path_on_datastore = os.path.join(target_path, file_name)
+        #dataset = Dataset.Tabular.from_delimited_files(
+        #    path=(datatstore, path_on_datastore))
+        #dataset = dataset.register(
+        #    workspace=aml_workspace,
+        #    name=dataset_name,
+        #    description='diabetes training data',
+        #    tags={'format': 'CSV'},
+        #    create_new_version=True)
 
     # Create a PipelineData to pass data between steps
     pipeline_data = PipelineData(
