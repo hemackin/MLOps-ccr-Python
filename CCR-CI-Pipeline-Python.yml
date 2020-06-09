@@ -12,10 +12,8 @@ trigger:
     - master
   paths:
     include:
-    - diabetes_regression/
-    - ml_service/pipelines/diabetes_regression_build_train_pipeline.py
-    - ml_service/pipelines/diabetes_regression_build_train_pipeline_with_r.py
-    - ml_service/pipelines/diabetes_regression_build_train_pipeline_with_r_on_dbricks.py
+    - ml_service/diabetes_regression_build_train_pipeline.py
+
 
 variables:
 - template: diabetes_regression-variables-template.yml
