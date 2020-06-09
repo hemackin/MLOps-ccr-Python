@@ -12,7 +12,7 @@ trigger:
     - master
   paths:
     include:
-    - ml_service/diabetes_regression_build_train_pipeline.py
+    - ml_service/CCR-Invoke-ML-Training-Pipeline.py
 
 
 variables:
